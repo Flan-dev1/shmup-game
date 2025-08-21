@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://erfcertecppp"]
+
+[ext_resource type="Script" uid="uid://b2xqykctuufb8" path="res://object_pooling.gd" id="1_6dd44"]
+
+[node name="ObjectPool" type="Node"]
+script = ExtResource("1_6dd44")
