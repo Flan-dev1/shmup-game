@@ -1,15 +1,13 @@
 extends Node2D
 
 @export var pool:ObjectPool
+@export var bulletsPerSecond:int
 
-func _process(_delta: float) -> void:
-	#shoot_bullet()
-	return
+@onready var timer = $CooldownTimer
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_space"):
-		print('spacebar')
-		shoot_bullet()
+func _ready() -> void:
+	timer.wait_time = 1.0/bulletsPerSecond
+	#TODO: change speed slightly based on player movement or adjust speed to always have constant bullet distance
 
 func shoot_bullet() -> void:
 	# 1. Get From Pool/Instantiate
@@ -35,6 +33,5 @@ func shoot_bullet() -> void:
 	
 	
 func _on_bullet_return_requested(bullet:Bullet):
-	print('signal received')
 	pool.add_to_pool(bullet)
 	bullet.disconnect('request_return_to_pool',Callable(self,'_on_bullet_return_requested'))

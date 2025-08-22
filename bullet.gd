@@ -19,6 +19,7 @@ func _process(delta):
 
 func scheduleRemoval():
 	await get_tree().create_timer(despawn_timer).timeout
-	print('emitting signal')
-	emit_signal("request_return_to_pool", self)
+	sendRemovalSignal()
 	
+func sendRemovalSignal():
+	emit_signal("request_return_to_pool", self)
