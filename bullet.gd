@@ -10,7 +10,6 @@ var forward_vector
 signal request_return_to_pool
 
 func _ready():
-	print('ready')
 	scheduleRemoval()
 
 func _process(delta):
