@@ -5,6 +5,7 @@ class_name Bullet
 @export var despawn_timer:float = 3.0
 @export var speed = 400
 
+@onready var sprite2D = $Sprite2D
 var forward_vector
 
 signal request_return_to_pool

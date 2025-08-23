@@ -24,5 +24,15 @@ texture = ExtResource("2_sweqy")
 position = Vector2(0, -20)
 pool = NodePath("../ObjectPool")
 
+[node name="Shooter2" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
+position = Vector2(0, -20)
+rotation = 0.349066
+pool = NodePath("../ObjectPool")
+
+[node name="Shooter3" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
+position = Vector2(0, -20)
+rotation = -0.349066
+pool = NodePath("../ObjectPool")
+
 [node name="ObjectPool" parent="." instance=ExtResource("3_hqtel")]
 scene = ExtResource("4_sweqy")
