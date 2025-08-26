@@ -25,6 +25,7 @@ func shoot_bullet() -> void:
 	# 3. Enable Bullet
 	bullet.set_physics_process(true)
 	bullet.set_process(true)
+	bullet.show()
 	
 	var forward_vector = -transform.y #technically transform.x is the forward vector
 	
