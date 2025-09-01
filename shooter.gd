@@ -21,6 +21,7 @@ func shoot_bullet() -> void:
 	
 	# I forgot about this step, basically set up signals
 	bullet.connect('request_return_to_pool',Callable(self,'_on_bullet_return_requested'))
+	bullet.scheduleRemoval()
 	
 	# 3. Enable Bullet
 	bullet.set_physics_process(true)
@@ -28,7 +29,6 @@ func shoot_bullet() -> void:
 	bullet.show()
 	
 	var forward_vector = -transform.y #technically transform.x is the forward vector
-	
 	
 	bullet.forward_vector = forward_vector
 	var sprite = bullet.sprite2D as Sprite2D
