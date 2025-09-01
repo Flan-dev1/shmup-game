@@ -1,18 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://8hdujqa0wvjb"]
 
 [ext_resource type="Script" uid="uid://bmexrhb3qhina" path="res://bullet.gd" id="1_v7oki"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v7oki"]
-size = Vector2(8, 16)
+[ext_resource type="Texture2D" uid="uid://bl0fwkfvsydja" path="res://assets/boolet.png" id="2_v8qja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
 size = Vector2(8, 16)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_v7oki")
+speed = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_v7oki")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_v8qja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v8qja")
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="sendRemovalSignal"]

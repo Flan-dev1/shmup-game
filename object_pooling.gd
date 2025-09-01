@@ -22,8 +22,4 @@ func pull_from_pool() -> Node2D:
 		object = object_pool[0]
 		object_pool.remove_at(0)
 	
-	#object.set_process(true)
-	#object.set_physics_process(true)
-	#object.show()
-	
 	return object

@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dvya5kaurlsky" path="res://player_movement.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://biw4e2a2rji7l" path="res://shooter.tscn" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://tag23t5m5k6f" path="res://assets/player.png" id="2_sweqy"]
 [ext_resource type="PackedScene" uid="uid://erfcertecppp" path="res://object_pool.tscn" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://8hdujqa0wvjb" path="res://bullet.tscn" id="4_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b052v"]
-size = Vector2(32, 32)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c25cv"]
 size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
@@ -18,9 +16,22 @@ script = ExtResource("1_4flbx")
 shape = SubResource("RectangleShape2D_b052v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_c25cv")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_sweqy")
 
 [node name="Shooter" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
+position = Vector2(0, -20)
+pool = NodePath("../ObjectPool")
+
+[node name="Shooter2" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
+position = Vector2(0, -20)
+rotation = 0.349066
+pool = NodePath("../ObjectPool")
+
+[node name="Shooter3" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
+position = Vector2(0, -20)
+rotation = -0.349066
 pool = NodePath("../ObjectPool")
 
 [node name="ObjectPool" parent="." instance=ExtResource("3_hqtel")]
