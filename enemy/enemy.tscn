@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc8pxlcw7y5lu"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" path="res://Godot-Placeholder-Sprites-main/Circle/Circle-0002.png" id="1_7k104"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 15.1327
+
+[node name="enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_7k104")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4gyqm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

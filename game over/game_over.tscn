@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddqkph0hwnsb8"]
 
-[ext_resource type="Script" uid="uid://dn005dlxvas4k" path="res://game_over.gd" id="1_y26ei"]
-[ext_resource type="PackedScene" uid="uid://bnjylwqiiqxbs" path="res://test_area.tscn" id="2_yxx3c"]
-[ext_resource type="Script" uid="uid://rsbjsic2svhf" path="res://final_score.gd" id="3_ccer4"]
+[ext_resource type="Script" uid="uid://dn005dlxvas4k" path="res://score/game_over.gd" id="1_061kk"]
+[ext_resource type="PackedScene" uid="uid://bnjylwqiiqxbs" path="res://test_area.tscn" id="2_tddcn"]
+[ext_resource type="Script" uid="uid://rsbjsic2svhf" path="res://score/final_score.gd" id="3_o3n2i"]
 
 [node name="gameOver" type="Control"]
 layout_mode = 3
@@ -11,8 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y26ei")
-levelScene = ExtResource("2_yxx3c")
+script = ExtResource("1_061kk")
+levelScene = ExtResource("2_tddcn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -50,7 +50,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Score:"
 horizontal_alignment = 1
-script = ExtResource("3_ccer4")
+script = ExtResource("3_o3n2i")
 
 [node name="bottomUI" type="MarginContainer" parent="."]
 layout_mode = 1
