@@ -21,6 +21,5 @@ func on_enemy_collision():
 	health -= 1
 	get_tree().call_group("ui", "setHealth", health)
 	
-	
 	if health <= 0:
 		get_tree().change_scene_to_file("res://game over/game_over.tscn")

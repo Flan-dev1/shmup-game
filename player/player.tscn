@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dstsqcuel5qtl"]
 
-[ext_resource type="Script" uid="uid://dvya5kaurlsky" path="res://player_movement.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://biw4e2a2rji7l" path="res://shooter.tscn" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://dvya5kaurlsky" path="res://player/player_movement.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://biw4e2a2rji7l" path="res://shooter/shooter.tscn" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://tag23t5m5k6f" path="res://assets/player.png" id="2_sweqy"]
-[ext_resource type="PackedScene" uid="uid://erfcertecppp" path="res://object_pool.tscn" id="3_hqtel"]
-[ext_resource type="PackedScene" uid="uid://8hdujqa0wvjb" path="res://bullet.tscn" id="4_sweqy"]
+[ext_resource type="PackedScene" uid="uid://erfcertecppp" path="res://object pool/object_pool.tscn" id="3_hqtel"]
+[ext_resource type="PackedScene" uid="uid://8hdujqa0wvjb" path="res://player bullet/bullet.tscn" id="4_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b052v"]
 size = Vector2(32, 32)
@@ -26,13 +26,13 @@ pool = NodePath("../ObjectPool")
 
 [node name="Shooter2" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
 position = Vector2(0, -20)
-rotation = 0.349066
 pool = NodePath("../ObjectPool")
+angle_offset = 15.0
 
 [node name="Shooter3" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
 position = Vector2(0, -20)
-rotation = -0.349066
 pool = NodePath("../ObjectPool")
+angle_offset = -15.0
 
 [node name="ObjectPool" parent="." instance=ExtResource("3_hqtel")]
 scene = ExtResource("4_sweqy")

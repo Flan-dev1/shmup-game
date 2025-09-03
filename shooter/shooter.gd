@@ -2,12 +2,16 @@ extends Node2D
 
 @export var pool:ObjectPool
 @export var bulletsPerSecond:int
+@export var angle_offset:float = 0
 
 @onready var timer = $CooldownTimer
 
 func _ready() -> void:
 	timer.wait_time = 1.0/bulletsPerSecond
 	#TODO: change speed slightly based on player movement or adjust speed to always have constant bullet distance
+
+func _process(delta):
+	rotation = get_parent().rotation + deg_to_rad(angle_offset)
 
 func shoot_bullet() -> void:
 	# 1. Get From Pool/Instantiate
