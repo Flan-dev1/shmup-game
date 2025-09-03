@@ -9,7 +9,6 @@ func _ready() -> void:
 	#health ui setup
 	get_tree().call_group("ui", "setHealth", health)
 
-
 # Enemy Spawner
 func _on_enemy_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
@@ -17,7 +16,6 @@ func _on_enemy_timer_timeout() -> void:
 	$enemies.add_child(enemy)
 	
 	enemy.connect("collision", on_enemy_collision)
-	
 	
 func on_enemy_collision():
 	health -= 1

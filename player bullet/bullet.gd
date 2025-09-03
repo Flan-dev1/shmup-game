@@ -22,6 +22,6 @@ func scheduleRemoval():
 func sendRemovalSignal():
 	emit_signal("request_return_to_pool", self)
 
-func die(): #placehold function for collision
+func die():
 	timer.stop()
 	sendRemovalSignal()
