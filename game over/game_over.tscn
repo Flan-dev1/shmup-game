@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddqkph0hwnsb8"]
+
+[ext_resource type="Script" uid="uid://dn005dlxvas4k" path="res://score/game_over.gd" id="1_061kk"]
+[ext_resource type="PackedScene" uid="uid://bnjylwqiiqxbs" path="res://test_area.tscn" id="2_tddcn"]
+[ext_resource type="Script" uid="uid://rsbjsic2svhf" path="res://score/final_score.gd" id="3_o3n2i"]
+
+[node name="gameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_061kk")
+levelScene = ExtResource("2_tddcn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.276289, 0.225827, 0.336903, 1)
+
+[node name="centerUI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -57.5
+offset_right = 143.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="centerUI"]
+layout_mode = 2
+
+[node name="gameOver" type="Label" parent="centerUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+
+[node name="finalScore" type="Label" parent="centerUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Score:"
+horizontal_alignment = 1
+script = ExtResource("3_o3n2i")
+
+[node name="bottomUI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="retry" type="Label" parent="bottomUI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "PRESS SPACE TO TRY AGAIN"

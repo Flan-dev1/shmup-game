@@ -5,6 +5,3 @@
 [node name="TestArea" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_6fnve")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)

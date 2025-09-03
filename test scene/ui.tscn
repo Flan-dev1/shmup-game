@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyw4fqwrpd6mf"]
+
+[ext_resource type="Script" uid="uid://d07fktyl5koei" path="res://test scene/ui.gd" id="1_fyqef"]
+[ext_resource type="Script" path="res://score/score_label.gd" id="2_m6e0p"]
+
+[node name="ui" type="CanvasLayer" groups=["score", "ui"]]
+script = ExtResource("1_fyqef")
+
+[node name="health" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="health"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="score" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 45
+
+[node name="scoreLabel" type="Label" parent="score"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Score: 0"
+horizontal_alignment = 1
+script = ExtResource("2_m6e0p")
