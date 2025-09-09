@@ -14,6 +14,7 @@ const bulletScene = preload("res://enemy_bullet.tscn")
 @export var radius = 100
 
 signal collision
+signal spawnBullet(enemyBullet)
 
 func _ready():
 	#Spawn points
@@ -46,7 +47,7 @@ func _on_shoot_timer_timeout() -> void:
 		get_tree().root.add_child(enemyBullet)
 		enemyBullet.position = s.global_position
 		enemyBullet.rotation = s.global_rotation	
-
+		emit_signal("spawnBullet",enemyBullet)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet and area_entered.is_connected(_on_area_entered):
@@ -57,7 +58,6 @@ func _on_area_entered(area: Area2D) -> void:
 		area = area as Bullet
 		area.die()
 		queue_free()
-		
 
 func _on_body_entered(body: Node2D) -> void:
 	collision.emit()
