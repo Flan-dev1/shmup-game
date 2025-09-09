@@ -6,8 +6,14 @@ extends Node2D
 
 @onready var timer = $CooldownTimer
 
-func _ready() -> void:
-	timer.wait_time = 1.0/bulletsPerSecond
+# This is an on left click, it will shoot
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_click"):
+		print('left click')
+		shoot_bullet()
+
+#func _ready() -> void:
+	#timer.wait_time = 1.0/bulletsPerSecond
 	#TODO: change speed slightly based on player movement or adjust speed to always have constant bullet distance
 
 func _process(delta):

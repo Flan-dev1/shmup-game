@@ -2,12 +2,14 @@ extends Area2D
 
 class_name Enemy
 
+#tracking player
 @export var speed = 100
 var playerPosition
 var targetPosition
 @onready var player = get_parent().get_parent().get_node("Player")
 
 var rng := RandomNumberGenerator.new()
+
 
 signal collision
 
@@ -24,10 +26,12 @@ func _physics_process(delta):
 		look_at(playerPosition)
 
 func _ready():
+	#Spawn points
 	var width = get_viewport().get_visible_rect().size[0]
 	var randomX = rng.randi_range(0,width)
 	var randomY = rng.randi_range(10,610)
 	position = Vector2(randomX,randomY)
+	
 
 func _on_body_entered(body):
 	collision.emit()
@@ -44,3 +48,4 @@ func _on_area_entered(area):
 		area = area as Bullet
 		area.die()
 		queue_free()
+		

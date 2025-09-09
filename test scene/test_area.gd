@@ -1,6 +1,8 @@
 extends Node2D
 
-var enemy_scene: PackedScene = load("res://enemy/enemy.tscn")
+var meleeEnemyScene: PackedScene = load("res://enemy/enemy.tscn")
+var staticRangedEnemiesScene: PackedScene = load("res://static_enemy.tscn")
+var enemyBulletScene: PackedScene = load("res://enemy_bullet.tscn")
 
 var health: int = 5
 
@@ -9,13 +11,10 @@ func _ready() -> void:
 	#health ui setup
 	get_tree().call_group("ui", "setHealth", health)
 
-# Enemy Spawner
-func _on_enemy_timer_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
+	#Enemy Bullet Collision
+	var staticEnemyBullet = enemyBulletScene.instantiate()
 	
-	$enemies.add_child(enemy)
-	
-	enemy.connect("collision", on_enemy_collision)
+	staticEnemyBullet.connect("enemyBulletCollision", on_static_enemy_bullet_collision)
 	
 func on_enemy_collision():
 	health -= 1
@@ -23,3 +22,36 @@ func on_enemy_collision():
 	
 	if health <= 0:
 		get_tree().change_scene_to_file("res://game over/game_over.tscn")
+
+# Melee Enemy Spawner
+func _on_melee_enemy_timer_timeout() -> void:
+	var meleeEnemy = meleeEnemyScene.instantiate()
+	
+	$meleeEnemies.add_child(meleeEnemy)
+	
+	meleeEnemy.connect("collision", on_enemy_collision)
+	
+	
+func on_static_enemy_collision():
+	health -=1
+	get_tree().call_group("ui", "setHealth", health)
+	
+	if health <= 0:
+		get_tree().change_scene_to_file("res://game over/game_over.tscn")
+
+func _on_static_ranged_enemy_timer_timeout() -> void:
+	var staticRangedEnemy = staticRangedEnemiesScene.instantiate()
+	
+	$staticRangedEnemies.add_child(staticRangedEnemy)
+	
+	staticRangedEnemy.connect("collision", on_static_enemy_collision)
+
+func on_static_enemy_bullet_collision():
+	
+	health -=1
+	get_tree().call_group("ui", "setHealth", health)
+	
+	if health <= 0:
+		get_tree().change_scene_to_file("res://game over/game_over.tscn")
+	
+	print("Receiving Signal")

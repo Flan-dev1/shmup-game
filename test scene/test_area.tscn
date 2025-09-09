@@ -9,11 +9,18 @@ script = ExtResource("1_rfpkf")
 
 [node name="Player" parent="." instance=ExtResource("2_6fnve")]
 
-[node name="enemyTimer" type="Timer" parent="."]
+[node name="meleeEnemyTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="enemies" type="Node2D" parent="."]
+[node name="meleeEnemies" type="Node2D" parent="."]
+
+[node name="staticRangedEnemyTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="staticRangedEnemies" type="Node2D" parent="."]
 
 [node name="ui" parent="." instance=ExtResource("3_6fnve")]
 
-[connection signal="timeout" from="enemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="meleeEnemyTimer" to="." method="_on_melee_enemy_timer_timeout"]
+[connection signal="timeout" from="staticRangedEnemyTimer" to="." method="_on_static_ranged_enemy_timer_timeout"]

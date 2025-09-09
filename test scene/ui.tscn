@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyw4fqwrpd6mf"]
 
 [ext_resource type="Script" uid="uid://d07fktyl5koei" path="res://test scene/ui.gd" id="1_fyqef"]
-[ext_resource type="Script" path="res://score/score_label.gd" id="2_m6e0p"]
+[ext_resource type="Script" uid="uid://4oisxh0c5b74" path="res://score/score_label.gd" id="2_m6e0p"]
 
 [node name="ui" type="CanvasLayer" groups=["score", "ui"]]
 script = ExtResource("1_fyqef")
