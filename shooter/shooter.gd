@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 	#timer.wait_time = 1.0/bulletsPerSecond
 	#TODO: change speed slightly based on player movement or adjust speed to always have constant bullet distance
 
-func _process(delta):
+func _process(_delta):
 	rotation = get_parent().rotation + deg_to_rad(angle_offset)
 
 func shoot_bullet() -> void:

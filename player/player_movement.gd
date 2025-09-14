@@ -18,7 +18,7 @@ func get_input():
 	if Input.is_action_just_released('ui_shift'):
 		slow_time(false)
 
-func _process(delta):
+func _process(_delta):
 	look_at_mouse()
 
 func _physics_process(_delta):
