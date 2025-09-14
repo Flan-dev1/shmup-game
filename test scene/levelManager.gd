@@ -1,7 +1,7 @@
 extends Node2D
 
 var meleeEnemyScene: PackedScene = load("res://enemy/enemy.tscn")
-var staticRangedEnemiesScene: PackedScene = load("res://static_enemy.tscn")
+var staticRangedEnemiesScene: PackedScene = load("res://staticEnemy/static_enemy.tscn")
 
 var health: int = 5
 

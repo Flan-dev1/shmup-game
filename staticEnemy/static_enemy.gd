@@ -3,7 +3,7 @@ extends Area2D
 var rng := RandomNumberGenerator.new()
 
 #Bullet spawn
-const bulletScene = preload("res://enemy_bullet.tscn")
+const bulletScene = preload("res://staticEnemy/enemy_bullet.tscn")
 @onready var shootTimer = $shootTimer
 @onready var rotater = $rotater
 

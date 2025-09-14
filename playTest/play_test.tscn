@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx35w47ndq144"]
+
+[ext_resource type="PackedScene" uid="uid://coj4brnxhcoac" path="res://staticSpreadEnemy/static_spread_enemy.tscn" id="1_mvwxp"]
+
+[node name="playTest" type="Node2D"]
+
+[node name="staticSpreadEnemy" parent="." instance=ExtResource("1_mvwxp")]

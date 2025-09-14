@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddqkph0hwnsb8"]
 
 [ext_resource type="Script" uid="uid://dn005dlxvas4k" path="res://score/game_over.gd" id="1_061kk"]
-[ext_resource type="PackedScene" uid="uid://bnjylwqiiqxbs" path="res://test_area.tscn" id="2_tddcn"]
+[ext_resource type="PackedScene" uid="uid://bnjylwqiiqxbs" path="res://test scene/levelManager.tscn" id="2_tddcn"]
 [ext_resource type="Script" uid="uid://rsbjsic2svhf" path="res://score/final_score.gd" id="3_o3n2i"]
 
 [node name="gameOver" type="Control"]

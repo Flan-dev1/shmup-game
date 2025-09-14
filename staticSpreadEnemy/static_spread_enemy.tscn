@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bovg3h1nxjtvw"]
+[gd_scene load_steps=4 format=3 uid="uid://coj4brnxhcoac"]
 
-[ext_resource type="Script" uid="uid://dpwcc6m1swvho" path="res://static_enemy.gd" id="1_qfi0h"]
-[ext_resource type="Texture2D" uid="uid://dlvm5qsxdual2" path="res://assets/Square/Square-0005.png" id="2_f0lhj"]
+[ext_resource type="Script" uid="uid://h4rgddap087u" path="res://staticSpreadEnemy/static_spread_enemy.gd" id="1_t6vwb"]
+[ext_resource type="Texture2D" uid="uid://dlvm5qsxdual2" path="res://assets/Square/Square-0005.png" id="2_clky1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btpm6"]
 size = Vector2(30, 30)
 
-[node name="staticEnemy" type="Area2D"]
+[node name="staticSpreadEnemy" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_qfi0h")
+script = ExtResource("1_t6vwb")
+rotateSpeed = 0
+shootTimerWaitTime = 1.0
+spawnPointCount = 16
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_f0lhj")
+texture = ExtResource("2_clky1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_btpm6")

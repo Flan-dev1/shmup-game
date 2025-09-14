@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnjylwqiiqxbs"]
 
-[ext_resource type="Script" uid="uid://cjtwtcyrp2vt1" path="res://test scene/test_area.gd" id="1_rfpkf"]
-[ext_resource type="PackedScene" uid="uid://dstsqcuel5qtl" path="res://player/player.tscn" id="2_6fnve"]
-[ext_resource type="PackedScene" uid="uid://dyw4fqwrpd6mf" path="res://test scene/ui.tscn" id="3_6fnve"]
+[ext_resource type="Script" uid="uid://cjtwtcyrp2vt1" path="res://test scene/levelManager.gd" id="1_jw1ae"]
+[ext_resource type="PackedScene" uid="uid://dstsqcuel5qtl" path="res://player/player.tscn" id="2_a06ur"]
+[ext_resource type="PackedScene" uid="uid://dyw4fqwrpd6mf" path="res://test scene/ui.tscn" id="3_4x3ml"]
 
-[node name="TestArea" type="Node2D"]
-script = ExtResource("1_rfpkf")
+[node name="levelManager" type="Node2D"]
+script = ExtResource("1_jw1ae")
 
-[node name="Player" parent="." instance=ExtResource("2_6fnve")]
+[node name="Player" parent="." instance=ExtResource("2_a06ur")]
 
 [node name="meleeEnemyTimer" type="Timer" parent="."]
 autostart = true
@@ -20,7 +20,7 @@ autostart = true
 
 [node name="staticRangedEnemies" type="Node2D" parent="."]
 
-[node name="ui" parent="." instance=ExtResource("3_6fnve")]
+[node name="ui" parent="." instance=ExtResource("3_4x3ml")]
 
 [connection signal="timeout" from="meleeEnemyTimer" to="." method="_on_melee_enemy_timer_timeout"]
 [connection signal="timeout" from="staticRangedEnemyTimer" to="." method="_on_static_ranged_enemy_timer_timeout"]
