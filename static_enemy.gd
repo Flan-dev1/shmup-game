@@ -38,6 +38,7 @@ func _ready():
 	shootTimer.start()
 	
 func _process(delta):
+	#change rotation_degrees to "- rotateSpeed" to make it counter clockwise
 	var newRotation = rotater.rotation_degrees + rotateSpeed * delta
 	rotater.rotation_degrees = fmod(newRotation, 360)
 
