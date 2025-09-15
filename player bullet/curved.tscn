@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvrkfwsv1tltw"]
+[gd_scene load_steps=4 format=3 uid="uid://eqxbius8sxsy"]
 
-[ext_resource type="Script" uid="uid://bmexrhb3qhina" path="res://player bullet/bullet.gd" id="1_case4"]
+[ext_resource type="Script" uid="uid://c2jt8rasupcso" path="res://player bullet/curved.gd" id="1_laoeb"]
 [ext_resource type="Texture2D" uid="uid://bl0fwkfvsydja" path="res://assets/boolet.png" id="2_v8qja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
 size = Vector2(8, 16)
 
-[node name="Bullet" type="Area2D"]
-script = ExtResource("1_case4")
+[node name="Curved" type="Area2D"]
+script = ExtResource("1_laoeb")
 speed = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

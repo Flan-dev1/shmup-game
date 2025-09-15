@@ -13,6 +13,10 @@ signal request_return_to_pool
 func _ready() -> void:
 	timer = $DeathTimer
 
+func initialize(startingPosition : Vector2, startingVector: Vector2):
+	global_position = startingPosition
+	forward_vector = startingVector 
+
 func _process(delta):
 	global_position += forward_vector * speed * delta
 

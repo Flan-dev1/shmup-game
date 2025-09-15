@@ -20,8 +20,9 @@ func shoot_bullet() -> void:
 	if(!bullet.get_parent() && get_tree()):
 		get_tree().root.add_child(bullet)
 	
-	# 2. reset position and vector?
-	bullet.global_position = global_position
+	# 2. reset position and vector
+	var forward_vector = -transform.y #technically transform.x is the forward vector
+	bullet.initialize(global_position,forward_vector)
 	
 	# I forgot about this step, basically set up signals
 	bullet.connect('request_return_to_pool',Callable(self,'_on_bullet_return_requested'))
@@ -31,8 +32,6 @@ func shoot_bullet() -> void:
 	bullet.set_physics_process(true)
 	bullet.set_process(true)
 	bullet.show()
-	
-	var forward_vector = -transform.y #technically transform.x is the forward vector
 	
 	bullet.forward_vector = forward_vector
 	var sprite = bullet.sprite2D as Sprite2D
