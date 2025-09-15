@@ -24,17 +24,20 @@ texture = ExtResource("2_sweqy")
 [node name="Shooter" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
 position = Vector2(0, -20)
 pool = NodePath("../ObjectPool")
+bulletsPerSecond = 15
 bulletType = ExtResource("5_g6k8r")
 
 [node name="Shooter2" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
 position = Vector2(0, -20)
 pool = NodePath("../ObjectPool")
+bulletsPerSecond = 15
 angle_offset = 15.0
 bulletType = ExtResource("5_qjkh3")
 
 [node name="Shooter3" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
 position = Vector2(0, -20)
 pool = NodePath("../ObjectPool")
+bulletsPerSecond = 15
 angle_offset = -15.0
 bulletType = ExtResource("5_qjkh3")
 

@@ -1,6 +1,6 @@
-extends Bullet
-
 class_name Curved
+
+extends Bullet
 
 var base_position
 var time_passed

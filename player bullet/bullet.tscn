@@ -19,6 +19,7 @@ texture = ExtResource("2_v8qja")
 shape = SubResource("RectangleShape2D_v8qja")
 
 [node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [connection signal="timeout" from="DeathTimer" to="." method="sendRemovalSignal"]
