@@ -4,6 +4,8 @@ extends Node2D
 @export var bulletsPerSecond:int
 @export var angle_offset:float = 0
 
+@export var bulletType : PackedScene
+
 @onready var timer = $CooldownTimer
 
 func _ready() -> void:
@@ -15,7 +17,7 @@ func _process(delta):
 
 func shoot_bullet() -> void:
 	# 1. Get From Pool/Instantiate
-	var bullet = pool.pull_from_pool() as Bullet
+	var bullet = pool.pull_from_pool(bulletType) as Bullet
 	
 	if(!bullet.get_parent() && get_tree()):
 		get_tree().root.add_child(bullet)
