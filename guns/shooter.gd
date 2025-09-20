@@ -1,7 +1,9 @@
 extends Node2D
 
+class_name Shooter
+
 @export var pool:ObjectPool
-@export var bulletsPerSecond:int
+@export var fireRate:int
 @export var angle_offset:float = 0
 
 @export var bulletType : PackedScene
@@ -9,7 +11,7 @@ extends Node2D
 @onready var timer = $CooldownTimer
 
 func _ready() -> void:
-	timer.wait_time = 1.0/bulletsPerSecond
+	timer.wait_time = 1.0/fireRate
 	#TODO: change speed slightly based on player movement or adjust speed to always have constant bullet distance
 
 func _process(delta):
