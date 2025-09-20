@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dstsqcuel5qtl"]
+[gd_scene load_steps=7 format=3 uid="uid://dstsqcuel5qtl"]
 
 [ext_resource type="Script" uid="uid://dvya5kaurlsky" path="res://player/player_movement.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://biw4e2a2rji7l" path="res://guns/shooter.tscn" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://tag23t5m5k6f" path="res://assets/player.png" id="2_sweqy"]
 [ext_resource type="PackedScene" uid="uid://erfcertecppp" path="res://object pool/object_pool.tscn" id="3_hqtel"]
-[ext_resource type="PackedScene" uid="uid://eqxbius8sxsy" path="res://player bullet/curved.tscn" id="5_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://cmjmbr4w2fdyb" path="res://guns/shotgun/shotgun.tscn" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://dvrkfwsv1tltw" path="res://player bullet/bullet.tscn" id="5_qjkh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b052v"]
@@ -21,24 +20,9 @@ texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_sweqy")
 
-[node name="Shooter" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
-position = Vector2(0, -20)
-pool = NodePath("../ObjectPool")
-bulletsPerSecond = 15
-bulletType = ExtResource("5_g6k8r")
-
-[node name="Shooter2" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
-position = Vector2(0, -20)
-pool = NodePath("../ObjectPool")
-bulletsPerSecond = 15
-angle_offset = 15.0
-bulletType = ExtResource("5_qjkh3")
-
-[node name="Shooter3" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("2_onrkg")]
-position = Vector2(0, -20)
-pool = NodePath("../ObjectPool")
-bulletsPerSecond = 15
-angle_offset = -15.0
-bulletType = ExtResource("5_qjkh3")
-
 [node name="ObjectPool" parent="." instance=ExtResource("3_hqtel")]
+
+[node name="Shotgun" parent="." node_paths=PackedStringArray("pool") instance=ExtResource("4_yw30f")]
+pool = NodePath("../ObjectPool")
+fireRate = 2
+bulletType = ExtResource("5_qjkh3")
