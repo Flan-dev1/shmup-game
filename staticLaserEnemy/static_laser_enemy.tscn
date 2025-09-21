@@ -24,8 +24,9 @@ shape = SubResource("RectangleShape2D_q0eyd")
 [node name="enemyWarningLine" parent="." instance=ExtResource("4_5f4a3")]
 target_position = Vector2(1400, 50)
 
-[node name="shootTimer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="enemyStartup" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="enemyStartup" to="." method="_on_enemy_startup_timeout"]

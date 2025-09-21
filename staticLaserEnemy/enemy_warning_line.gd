@@ -15,8 +15,10 @@ extends RayCast2D
 #seconds the warning laser stays active
 @export var warningLaserTime := 1.0
 
+var initialized := false
+
 # If `true`, the laser is firing.
-@export var isCasting := false: set = set_is_casting
+@export var isCasting := false
 
 var warningLaserTween: Tween = null
 
@@ -25,17 +27,14 @@ var warningLaserTween: Tween = null
 
 
 func _ready() -> void:
+	line_2d.visible = false
+	set_physics_process(false)
 	set_color(color)
-	set_is_casting(isCasting)
 	
 	var start := Vector2.RIGHT * startDistance
 	line_2d.points = PackedVector2Array([start, start])
-	line_2d.visible = false
 
-
-	if not Engine.is_editor_hint():
-		set_physics_process(false)
-
+	initialized = true
 
 func _physics_process(delta: float) -> void:
 	# warning laser extension
@@ -65,7 +64,7 @@ func set_is_casting(newValue: bool) -> void:
 	if not line_2d:
 		return
 
-	if isCasting:
+	if isCasting and initialized:
 		var laserStart := Vector2.RIGHT * startDistance
 		line_2d.points[0] = laserStart
 		line_2d.points[1] = laserStart
@@ -96,3 +95,21 @@ func set_color(new_color: Color) -> void:
 	if line_2d == null:
 		return
 	line_2d.modulate = new_color
+
+func startLaser() -> void:
+	if not initialized:
+		return
+	isCasting = true
+	set_physics_process(true)
+	var laserStart := Vector2.RIGHT * startDistance
+	line_2d.points[0] = laserStart
+	line_2d.points[1] = laserStart
+	appear()
+
+func stopLaser() -> void:
+	if not initialized:
+		return
+	isCasting = false
+	set_physics_process(false)
+	target_position = Vector2.ZERO
+	disappear()
