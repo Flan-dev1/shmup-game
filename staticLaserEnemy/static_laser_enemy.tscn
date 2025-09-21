@@ -18,8 +18,8 @@ shape = SubResource("RectangleShape2D_q0eyd")
 
 [node name="enemyLaser" parent="." instance=ExtResource("3_tr1yx")]
 target_position = Vector2(1400, 50)
-castSpeed = null
-maxLength = null
-startDistance = null
-growthTime = null
-isCasting = null
+mainLaserTime = null
+warningGrowthTime = 0.3
+
+[node name="shootTimer" type="Timer" parent="."]
+wait_time = 2.0

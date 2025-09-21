@@ -1,10 +1,21 @@
 extends Area2D
 
+#total time for one cycle (warning + main laser)
+@export var shootInterval := 3.0 
+#percent of interval for warning line e.g 60%
+@export var warningRatio := 0.6
+#percent of interval for main laser e.g 40%
+@export var mainLaserRatio := 0.4
+
 var rng := RandomNumberGenerator.new()
+
+
 @onready var laser = $enemyLaser
+@onready var shootTimer: Timer = $shootTimer
 
 signal collision
 signal spawnBullet(enemyBullet)
+
 
 func _ready():
 	#Spawn points
@@ -13,7 +24,29 @@ func _ready():
 	var randomY = rng.randi_range(10,610)
 	position = Vector2(randomX,randomY)
 	
+	#configure timer
+	shootTimer.wait_time = shootInterval
+	shootTimer.timeout.connect(start_shoot_cycle)
+	shootTimer.start()
 	
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
-	laser.isCasting = Input.is_action_pressed("ui_click")
+	
+func start_shoot_cycle() -> void:
+	shoot_laser()
+		
+func shoot_laser() -> void:
+	var warningTime = shootInterval * warningRatio
+	var mainlaserTime = shootInterval * mainLaserRatio
+	
+	#show red warning line
+	laser.prepareLaser()
+	await get_tree().create_timer(warningTime).timeout
+	
+	#fire main laser
+	laser.fire_laser()
+	await get_tree().create_timer(mainlaserTime).timeout
+	
+	#turn off
+	laser.set_is_casting(false)
+	
