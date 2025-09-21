@@ -6,6 +6,8 @@ extends Area2D
 @export var warningRatio := 0.6
 #percent of interval for main laser e.g 40%
 @export var mainLaserRatio := 0.4
+#cooldowntime between shots
+@export var cooldownTime = 1.0
 
 var rng := RandomNumberGenerator.new()
 
@@ -44,6 +46,9 @@ func run_cycle() -> void:
 	await get_tree().create_timer(mainlaserTime).timeout
 		
 	await laser.set_is_casting(false)
+	
+	#cooldown before restarting the next cycle
+	await get_tree().create_timer(cooldownTime).timeout
 		
 	#restart after full cycle
 	await get_tree().create_timer(0.01).timeout
