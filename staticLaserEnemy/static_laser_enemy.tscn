@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhx3mrotksrke"]
+[gd_scene load_steps=6 format=3 uid="uid://dhx3mrotksrke"]
 
 [ext_resource type="Script" uid="uid://c3wajp00jdko6" path="res://staticLaserEnemy/static_laser_enemy.gd" id="1_q0eyd"]
 [ext_resource type="Texture2D" uid="uid://dlvm5qsxdual2" path="res://assets/Square/Square-0005.png" id="1_rqgm6"]
 [ext_resource type="PackedScene" uid="uid://b70a1xi21qrit" path="res://staticLaserEnemy/enemy_laser.tscn" id="3_tr1yx"]
+[ext_resource type="PackedScene" uid="uid://c4xtgwpxaeftq" path="res://staticLaserEnemy/enemy_warning_line.tscn" id="4_5f4a3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0eyd"]
 size = Vector2(30, 30)
@@ -17,9 +18,9 @@ texture = ExtResource("1_rqgm6")
 shape = SubResource("RectangleShape2D_q0eyd")
 
 [node name="enemyLaser" parent="." instance=ExtResource("3_tr1yx")]
+
+[node name="enemyWarningLine" parent="." instance=ExtResource("4_5f4a3")]
 target_position = Vector2(1400, 50)
-mainLaserTime = null
-warningGrowthTime = 0.3
 
 [node name="shootTimer" type="Timer" parent="."]
 wait_time = 2.0

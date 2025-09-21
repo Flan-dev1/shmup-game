@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx35w47ndq144"]
 
 [ext_resource type="PackedScene" uid="uid://dstsqcuel5qtl" path="res://player/player.tscn" id="1_nl3ev"]
-[ext_resource type="PackedScene" uid="uid://bdm3r800rhwst" path="res://staticHomingEnemy/static_homing_enemy.tscn" id="2_nl3ev"]
+[ext_resource type="PackedScene" uid="uid://dhx3mrotksrke" path="res://staticLaserEnemy/static_laser_enemy.tscn" id="2_nl3ev"]
 
 [node name="playTest" type="Node2D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_nl3ev")]
 
-[node name="staticHomingEnemy" parent="." instance=ExtResource("2_nl3ev")]
+[node name="staticLaserEnemy" parent="." instance=ExtResource("2_nl3ev")]

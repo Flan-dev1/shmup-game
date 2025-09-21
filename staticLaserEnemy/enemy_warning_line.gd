@@ -1,7 +1,7 @@
 @tool
 extends RayCast2D
 
-##THIS AREA IS THE MAIN LASER
+##THIS AREA IS THE WARNING_LASER
 # Speed at which the laser extends when first fired, in pixels per second.
 @export var castSpeed := 7000.0
 # Maximum length of the laser in pixels.
@@ -10,15 +10,15 @@ extends RayCast2D
 @export var startDistance := 40.0
 # Base duration of the tween animation in seconds.
 @export var growthTime := 0.1
-@export var color := Color.WHITE: set = set_color
+@export var color := Color(1, 0, 0, 0.5): set = set_color
 
-#seconds the white laser stays active
-@export var mainLaserTime := 1.0
+#seconds the warning laser stays active
+@export var warningLaserTime := 1.0
 
 # If `true`, the laser is firing.
 @export var isCasting := false: set = set_is_casting
 
-var mainLaserTween: Tween = null
+var warningLaserTween: Tween = null
 
 @onready var line_2d: Line2D = $Line2D
 @onready var lineWidth := line_2d.width
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# main laser extension
+	# warning laser extension
 	target_position.x = move_toward(
 		target_position.x,
 		maxLength,
@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	line_2d.points[1] = laser_end_position
 
 		
-## MAIN LASER
+## WARNING_LASER
 func set_is_casting(newValue: bool) -> void:
 	if isCasting == newValue:
 		return
@@ -77,18 +77,18 @@ func set_is_casting(newValue: bool) -> void:
 
 func appear() -> void:
 	line_2d.visible = true
-	if mainLaserTween and mainLaserTween.is_running():
-		mainLaserTween.kill()
-	mainLaserTween = create_tween()
-	mainLaserTween.tween_property(line_2d, "width", lineWidth, growthTime * 2.0).from(0.0)
+	if warningLaserTween and warningLaserTween.is_running():
+		warningLaserTween.kill()
+	warningLaserTween = create_tween()
+	warningLaserTween.tween_property(line_2d, "width", lineWidth, growthTime * 2.0).from(0.0)
 
 
 func disappear() -> void:
-	if mainLaserTween and mainLaserTween.is_running():
-		mainLaserTween.kill()
-	mainLaserTween = create_tween()
-	mainLaserTween.tween_property(line_2d, "width", 0.0, growthTime).from_current()
-	mainLaserTween.tween_callback(line_2d.hide)
+	if warningLaserTween and warningLaserTween.is_running():
+		warningLaserTween.kill()
+	warningLaserTween = create_tween()
+	warningLaserTween.tween_property(line_2d, "width", 0.0, growthTime).from_current()
+	warningLaserTween.tween_callback(line_2d.hide)
 
 
 func set_color(new_color: Color) -> void:
