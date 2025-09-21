@@ -24,29 +24,27 @@ func _ready():
 	var randomY = rng.randi_range(10,610)
 	position = Vector2(randomX,randomY)
 	
-	#configure timer
-	shootTimer.wait_time = shootInterval
-	shootTimer.timeout.connect(start_shoot_cycle)
-	shootTimer.start()
+	#start cycle
+	start_shoot_cycle()
 	
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	
 func start_shoot_cycle() -> void:
-	shoot_laser()
-		
-func shoot_laser() -> void:
+	run_cycle()
+	
+func run_cycle() -> void:
 	var warningTime = shootInterval * warningRatio
 	var mainlaserTime = shootInterval * mainLaserRatio
 	
-	#show red warning line
-	laser.prepareLaser()
+	await laser.prepareLaser()
 	await get_tree().create_timer(warningTime).timeout
-	
-	#fire main laser
-	laser.fire_laser()
+		
+	await laser.fire_laser()
 	await get_tree().create_timer(mainlaserTime).timeout
-	
-	#turn off
-	laser.set_is_casting(false)
-	
+		
+	await laser.set_is_casting(false)
+		
+	#restart after full cycle
+	await get_tree().create_timer(0.01).timeout
+	start_shoot_cycle()

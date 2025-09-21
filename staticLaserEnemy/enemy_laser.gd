@@ -19,14 +19,13 @@ extends RayCast2D
 @export var isCasting := false: set = set_is_casting
 
 ## THIS AREA IS FOR THE WARNINGLINE LASER
-#seconds before the laser fires
-@export var warningTime := 1.0 
 #seconds it takes for the warning line to extend
 @export var warningGrowthTime := 1.0 
 
 @export var warningColor: Color = Color(1, 0, 0, 0.5) #red at 50% transparency
 
-var tween: Tween = null
+var warningTween: Tween = null
+var mainLaserTween: Tween = null
 
 @onready var line_2d: Line2D = $Line2D
 @onready var warningLine: Line2D = $warningLine
@@ -87,18 +86,18 @@ func set_is_casting(newValue: bool) -> void:
 
 func appear() -> void:
 	line_2d.visible = true
-	if tween and tween.is_running():
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property(line_2d, "width", lineWidth, growthTime * 2.0).from(0.0)
+	if mainLaserTween and mainLaserTween.is_running():
+		mainLaserTween.kill()
+	mainLaserTween = create_tween()
+	mainLaserTween.tween_property(line_2d, "width", lineWidth, growthTime * 2.0).from(0.0)
 
 
 func disappear() -> void:
-	if tween and tween.is_running():
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property(line_2d, "width", 0.0, growthTime).from_current()
-	tween.tween_callback(line_2d.hide)
+	if mainLaserTween and mainLaserTween.is_running():
+		mainLaserTween.kill()
+	mainLaserTween = create_tween()
+	mainLaserTween.tween_property(line_2d, "width", 0.0, growthTime).from_current()
+	mainLaserTween.tween_callback(line_2d.hide)
 
 
 func set_color(new_color: Color) -> void:
@@ -121,20 +120,20 @@ func prepareLaser():
 	warningLine.modulate = warningColor
 	
 	#kill left over tween
-	if tween and tween.is_running():
-		tween.kill()
+	if warningTween and warningTween.is_running():
+		warningTween.kill()
 	
 	#animate the end point gradually
-	tween = create_tween()
+	warningTween = create_tween()
 	warningLine.visible = true
-	tween.tween_method(set_warning_end, start, end, warningGrowthTime)
+	warningTween.tween_method(set_warning_end, start, end, warningGrowthTime)
+	await warningTween.finished #wait for tween to finish
 
 func set_warning_end(p: Vector2) -> void:
 	warningLine.set_point_position(1, p)
 
-func fire_laser():
+func fire_laser() -> void:
 	warningLine.visible = false
 	set_is_casting(true)
 	
-	await get_tree().create_timer(mainLaserTime).timeout
-	set_is_casting(false)
+	
