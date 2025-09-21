@@ -47,7 +47,11 @@ func _physics_process(delta: float) -> void:
 	
 #Center control
 func set_laser_state(newState: int) -> void:
+	if currentState == newState:
+		return
+	
 	currentState = newState
+	
 	match newState:
 		laserState.WARNING:
 			warningLaser.isCasting = true
@@ -62,3 +66,21 @@ func set_laser_state(newState: int) -> void:
 			enemyLaser.isCasting = false
 			stateTimer = cooldownTime
 			
+
+
+func _on_body_entered(body: Node2D) -> void:
+	collision.emit()
+	
+	if body is CharacterBody2D:
+		queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Bullet and area_entered.is_connected(_on_area_entered):
+		area_entered.disconnect(_on_area_entered)
+		# add 1 point to the score
+		ScoreManager.add_score(1)
+		
+		area = area as Bullet
+		area.die()
+		queue_free()
