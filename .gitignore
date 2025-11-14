@@ -2,3 +2,5 @@
 .godot/
 /android/
 /addons
+shmup-game.code-workspace
+.vscode/settings.json
